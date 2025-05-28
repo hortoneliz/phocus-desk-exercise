@@ -1,21 +1,10 @@
-import { useQuery } from "@apollo/client";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
-import { calculateDeskLayout } from "../calculateDeskLayout";
-import { PEOPLE_QUERY } from "../queries/people";
+import { useQuery } from '@apollo/client';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { calculateDeskLayout } from '../calculateDeskLayout';
+import { PEOPLE_QUERY } from '../queries/people';
 
 export default function LayoutPage() {
-  const {
-    loading: loadingUsers,
-    error: errorsUsers,
-    data: dataUsers,
-  } = useQuery(PEOPLE_QUERY);
+  const { loading: loadingUsers, error: errorsUsers, data: dataUsers } = useQuery(PEOPLE_QUERY);
 
   if (loadingUsers) return <p>Loading...</p>;
   if (errorsUsers) return <p>Error : {errorsUsers.message}</p>;
@@ -36,7 +25,7 @@ export default function LayoutPage() {
           {people.map((person) => (
             <TableRow key={person.id}>
               <TableCell>{person.name}</TableCell>
-              <TableCell>{person.team?.name ?? "None"}</TableCell>
+              <TableCell>{person.team?.name ?? 'None'}</TableCell>
               <TableCell>{person.dogStatus}</TableCell>
             </TableRow>
           ))}

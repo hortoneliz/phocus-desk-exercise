@@ -11,7 +11,7 @@ You must do this task:
 You must also do **exactly two** of the following tasks:
 - [ ] fix a bug in `TeamsPage.tsx` where editing the team name fails
 - [ ] implement a new feature on the Teams page that allows the removal of people from a team
-- [ ] implement delete on the Teams page
+- [X] implement delete on the Teams page
 - [ ] implement a visual representation of the Desk Layout instead of the current plain list (use rectangles for desks or similar)
 - [ ] add backend persistence to the Desk Layout so it is not recalculated per page load
 - [ ] add data validation checks to the API

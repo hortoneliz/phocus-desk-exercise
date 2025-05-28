@@ -24,4 +24,12 @@ export const PUT_TEAM = graphql(`
       }
     }
   }
-  `);
+`);
+
+export const DELETE_TEAM = graphql(`
+  mutation deleteTeam($id: ID!) {
+    deleteTeam(id: $id) {
+      id
+    }
+  }
+`);
