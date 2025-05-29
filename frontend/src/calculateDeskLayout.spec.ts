@@ -7,7 +7,7 @@ import { testPersonBuilder as person } from './testUtil';
 
 type Person = ReturnType<typeof calculateDeskLayout>[0];
 
-describe.skip('calculateDeskLayout', () => {
+describe('calculateDeskLayout', () => {
   it('single team no dogs order not important', () => {
     const people = [
       person('1', DogStatus.Like),
