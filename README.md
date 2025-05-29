@@ -9,7 +9,7 @@ You must do this task:
 - [ ] implement `calculateDeskLayout` in `calculateDeskLayout.ts` (REQUIRED)
 
 You must also do **exactly two** of the following tasks:
-- [ ] fix a bug in `TeamsPage.tsx` where editing the team name fails
+- [X] fix a bug in `TeamsPage.tsx` where editing the team name fails
 - [ ] implement a new feature on the Teams page that allows the removal of people from a team
 - [X] implement delete on the Teams page
 - [ ] implement a visual representation of the Desk Layout instead of the current plain list (use rectangles for desks or similar)

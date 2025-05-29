@@ -13,10 +13,14 @@ import com.phocas.exercise.desks.ApiContext;
 
 public class Team extends Table {
 
-	private final String name;
+	private String name;
 
 	@JsonCreator
 	public Team(String name) {
+		this.name = name;
+	}
+
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -38,9 +42,12 @@ public class Team extends Table {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (!super.equals(obj)) return false;
-		if (getClass() != obj.getClass()) return false;
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
 		Team other = (Team) obj;
 		return Objects.equals(name, other.name);
 	}
@@ -52,9 +59,19 @@ public class Team extends Table {
 
 	@Mutation
 	public static Team putTeam(ApiContext context, @Id Optional<String> id, String name) {
-		var team = new Team(name);
-		team.setId(id.orElse(context.database().newId()));
-		return context.database().put(team);
+		if (id.isPresent()) {
+			// If an ID is provided, check if the team already exists
+			var existingTeam = context.database().get(Team.class, id.get());
+			if (existingTeam != null) {
+				existingTeam.setName(name);
+				return context.database().put(existingTeam);
+			}
+		}
+
+		// If no ID is provided or the team does not exist, create a new one
+		var newTeam = new Team(name);
+		newTeam.setId(id.orElse(context.database().newId()));
+		return context.database().put(newTeam);
 	}
 
 	@Mutation
